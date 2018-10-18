@@ -104,7 +104,7 @@ public:
 	{
 		m_llFrame = m_llFrameMissCount = 0;
 		m_prevStartTime = 0;
-		m_avgTimePerFrame = 10000000 / 30;
+		m_avgTimePerFrame = 10000000 / 60;
 		m_pReceiver = new SharedImageMemory(CapNum);
 		m_iUnscaledBufSize = 0;
 		m_pUnscaledBuf = NULL;
@@ -746,8 +746,8 @@ private:
 		pCaps->MaxOutputSize.cx   = pvi->bmiHeader.biWidth;
 		pCaps->MaxOutputSize.cy   = pvi->bmiHeader.biHeight;
 		pCaps->MinFrameInterval = 10000000 / 120;
-		pCaps->MaxFrameInterval = 10000000 / 30;
-		pCaps->MinBitsPerSecond = pCaps->MinOutputSize.cx * pCaps->MinOutputSize.cy * pvi->bmiHeader.biBitCount * 30;
+		pCaps->MaxFrameInterval = 10000000 / 60;
+		pCaps->MinBitsPerSecond = pCaps->MinOutputSize.cx * pCaps->MinOutputSize.cy * pvi->bmiHeader.biBitCount * 60;
 		pCaps->MaxBitsPerSecond = pCaps->MaxOutputSize.cx * pCaps->MaxOutputSize.cy * pvi->bmiHeader.biBitCount * 120;
 		DebugLog("[GetStreamCaps] Index: %d - MINWIDTH: %d - MINHEIGHT: %d - MAXWIDTH: %d - MAXHEIGHT: %d - BITS: %d - TPS: %d - SIZEIMAGE: %d - SIZECALC: %d\n", iIndex, (int)pCaps->MinOutputSize.cx, (int)pCaps->MinOutputSize.cy, (int)pCaps->MaxOutputSize.cx, (int)pCaps->MaxOutputSize.cy, (int)pvi->bmiHeader.biBitCount, (int)pvi->AvgTimePerFrame, (int)pvi->bmiHeader.biSizeImage, (int)DIBSIZE(pvi->bmiHeader));
 		return S_OK;
